@@ -80,10 +80,11 @@ const Form = () => {
         ) : (
           <>
             <TextInputsContainer>
-              {textInputs.map((input) => {
+              {textInputs.map((input, index) => {
                 return (
                   <Input
                     key={input}
+                    autoFocus={index === 0}
                     name={input}
                     value={formData[input]}
                     handleChange={handleChange}

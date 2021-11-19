@@ -2,14 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Star } from "../Star.svg";
 
-const Input = ({ name, value, handleChange, error }) => {
+const Input = ({ name, value, handleChange, error, autoFocus }) => {
   const title = name[0].toUpperCase() + name.substring(1);
 
   return (
     <Wrapper>
       <label>
         <p>{title}:</p>
-        <input name={name} type="text" value={value} onChange={handleChange} />
+        <input
+          autoFocus={autoFocus}
+          name={name}
+          type="text"
+          value={value}
+          onChange={handleChange}
+        />
       </label>
       <Icon error={error}>
         <div>
