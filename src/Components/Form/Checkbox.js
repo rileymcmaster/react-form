@@ -14,7 +14,9 @@ const Checkbox = ({ name, checked, onChange, error }) => {
         <StyledCheckbox checked={checked} />
         <p>Subscribe to newsletter</p>
       </StyledLabel>
-      {error && <ErrorMessage>{error}</ErrorMessage>}
+      <ErrorMessage className={error ? "show-error" : undefined}>
+        {error}
+      </ErrorMessage>
     </Wrapper>
   );
 };
@@ -71,14 +73,16 @@ const StyledCheckbox = styled.div`
 
 const ErrorMessage = styled.p`
   color: var(--secondary-color);
-  position: absolute;
-  top: 2.5rem;
-  left: 50%;
-  transform: translate(-50%);
-  border-bottom: 5px solid var(--error-color);
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+  height: 2rem;
   white-space: nowrap;
   padding: 0 0.5rem 0.2rem;
   text-shadow: 2px 2px 2px rgba(00, 0, 0, 0.5);
+  &.show-error {
+    border-bottom: 5px solid var(--error-color);
+  }
 `;
 
 export default Checkbox;

@@ -9,7 +9,12 @@ import { validateEmail } from "../validateEmail";
 
 import buttonStyles from "../buttonStyles";
 
-const initialState = { name: "", company: "", email: "", subscribe: false };
+const initialState = {
+  name: "",
+  company: "",
+  email: "",
+  subscribe: false,
+};
 
 const Form = () => {
   const [formData, setFormData] = useState(initialState);
@@ -33,8 +38,9 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let validationErrors = {};
+
     let { name, company, email, subscribe } = formData;
+    let validationErrors = {};
 
     if (name.length <= 1) {
       validationErrors.name = "Name can't be blank";
@@ -50,11 +56,13 @@ const Form = () => {
     if (emailCheck) {
       validationErrors.email = emailCheck;
     }
-    const checkErrorsObj = Object.keys(validationErrors);
-    if (checkErrorsObj.length > 0) {
+    const currentErrorKeys = Object.keys(validationErrors);
+
+    if (currentErrorKeys.length > 0) {
       setErrorMessages(validationErrors);
       return;
     }
+
     setSubmitStatus("in progress");
     setTimeout(() => {
       setSubmitStatus("complete");
@@ -75,7 +83,7 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         {submitStatus === "complete" ? (
           <h1 className="success-message">
-            Thanks for the info, {formData.name.split(" ")[0]}
+            Thanks for the info, {formData.name.split(" ")[0]}!
           </h1>
         ) : (
           <>
@@ -131,16 +139,23 @@ const Wrapper = styled.div`
   form {
     margin: auto;
     max-width: var(--content-width);
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    height: 100%;
+    gap: 4rem;
     padding: 0 2rem 6rem;
+  }
+  @media (min-width: 768px) {
+    form {
+      gap: 2rem;
+    }
   }
 
   h1.success-message {
     margin-top: 5rem;
+    text-align: center;
   }
   @media screen and (min-width: 400px) {
     form {
@@ -163,8 +178,19 @@ const TextInputsContainer = styled.div`
 const CheckboxContainer = styled.div``;
 
 const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
   * ~ * {
     margin-left: 2rem;
+  }
+
+  @media (max-width: 300px) {
+    flex-direction: column;
+    * ~ * {
+      margin-top: 1rem;
+      margin-left: 0rem;
+    }
   }
 `;
 

@@ -21,8 +21,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  justify-content: flex-start;
+  height: 100%;
+  min-height: 100vh;
+  background: var(--bg-color);
 `;
 
 export default App;

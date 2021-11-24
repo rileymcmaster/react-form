@@ -2,11 +2,17 @@ import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
   :root {
+      /* off-black */
       --primary-color: #3B3B3B;
+      /* white */
       --secondary-color: #FFFFFF;
+      /* yellow */
       --third-color: #E8CB32;
+      /* red */
       --error-color: #DB2B38;
+      /* green */
       --bg-color: #72C75E;
+
       --content-width: 1000px;
       
     }
@@ -21,11 +27,7 @@ export default createGlobalStyle`
         
     }
     
-    html, body, div,
-    input, button, select, option,
-    h1, h2, h3, h4, h5, h6, p,
-    text {
-    }
+
     
     html {
         font-size: 20px;
@@ -36,6 +38,9 @@ export default createGlobalStyle`
     }
     @media (max-width: 400px) {
     html { font-size: 12px; }
+    }
+    @media (max-width: 300px) {
+    html { font-size: 10px; }
     }
     html, body {
         min-height: 100%;
@@ -48,12 +53,23 @@ export default createGlobalStyle`
         user-select: none;
     }
 
-        h2{
+    button {
+        cursor: cell;
+        border: none;
+        background: none;
+    }
+
+    h2{
     }
 
     p, a {
     }
 
+    html, body, div,
+    input, button, select, option,
+    h1, h2, h3, h4, h5, h6, p,
+    text {
+    }
 
     html, body, div, span, applet, object, iframe,
     h1, h2, h3, h4, h5, h6, p, blockquote, pre,

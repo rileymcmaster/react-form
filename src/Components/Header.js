@@ -3,11 +3,17 @@ import styled from "styled-components";
 import { GiKiwiBird } from "react-icons/gi";
 
 const Header = () => {
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
+
   return (
     <Wrapper>
       <TitleContainer>
-        <GiKiwiBird className="icon" />
-        <h1 className="title">SIA Sign-up</h1>
+        <button onClick={refreshPage} aria-label="Link to home">
+          <GiKiwiBird className="icon" />
+        </button>
+        <h1 className="title">JRM Sign-up</h1>
       </TitleContainer>
       <SubTitleContainer>
         <h1>FORM</h1>
@@ -20,7 +26,6 @@ const Wrapper = styled.div`
   color: var(--primary-color);
   background-color: var(--secondary-color);
   width: 100%;
-
   h1 {
     font-size: 3rem;
   }
@@ -28,6 +33,7 @@ const Wrapper = styled.div`
 
 const TitleContainer = styled.div`
   padding: 0.6rem 2rem 0;
+  width: 100%;
 
   @media (max-width: 530px) {
     padding: 1rem 1rem 0;
@@ -40,7 +46,6 @@ const TitleContainer = styled.div`
   }
 
   .icon {
-    margin-right: auto;
     margin-bottom: -1rem;
     font-size: 4rem;
     color: var(--primary-color);
